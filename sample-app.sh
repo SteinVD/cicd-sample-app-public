@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+if [ $(docker ps -q -f name=samplerunning) ]; then
+       docker stop samplerunning
+       docker rm samplerunning
+fi
+
 if [ ! -d "tempdir" ]; then
 	mkdir tempdir
 fi
